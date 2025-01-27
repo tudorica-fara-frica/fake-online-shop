@@ -10,11 +10,12 @@ export default async function MainCategories() {
     <div className="grid grid-cols-2 gap-3 px-4 py-8">
       {categories.map((category) => (
         <Link
+          className="h-full"
           key={category.category_id}
           // href={`/catalog?category_id=${category.category_id}`}
           href={`/catalog?${new URLSearchParams({ category_id: category.category_id })}`}
         >
-          <Card className="flex flex-row items-center justify-center gap-2 p-3 text-center">
+          <Card className="flex h-full flex-row items-center justify-center gap-2 p-3 text-center">
             <CardTitle className="leading-5">{category.name}</CardTitle>
           </Card>
         </Link>

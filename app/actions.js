@@ -185,3 +185,43 @@ export async function getPhotoById(id) {
     throw error;
   }
 }
+
+export async function getReviewsById(id) {
+  try {
+    const supabase = await createClient();
+    const { data: reviews, error } = await supabase
+      .from("Reviews")
+      .select("content")
+      .eq("product_id", id);
+    if (error) {
+      throw new Error(`Eroare la obtinerea review-urilor: ${error.message}`);
+    }
+    return reviews;
+  } catch (error) {
+    console.log(`A aparut o eroare`, error);
+    throw error;
+  }
+}
+
+export async function getRecommendedProductsByProductIdAndCategoryId({
+  product_id,
+  category_id,
+}) {
+  try {
+    const supabase = await createClient();
+    const { data: products, error } = await supabase
+      .from("Products")
+      .select("*")
+      .eq("category_id", category_id)
+      .neq("product_id", product_id);
+    if (error) {
+      throw new Error(
+        `Eroare la obtinerea produselor recomandate: ${error.message}`,
+      );
+    }
+    return products;
+  } catch (error) {
+    console.log(`A aparut o eroare`, error);
+    throw error;
+  }
+}

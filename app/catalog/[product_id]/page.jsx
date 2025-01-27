@@ -1,4 +1,12 @@
-import { getCategoryById, getPhotoById, getProductById } from "@/app/actions";
+import {
+  getCategoryById,
+  getPhotoById,
+  getProductById,
+  getRecommendedProductsByProductIdAndCategoryId,
+  getReviewsById,
+} from "@/app/actions";
+import ItemCategories from "@/components/item-categories";
+import ItemProductCard from "@/components/item-product-card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -11,6 +19,16 @@ export default async function Item({ params }) {
   const category = await getCategoryById(product.category_id);
 
   const photoUrl = await getPhotoById(product_id);
+
+  const reviews = await getReviewsById(product_id);
+
+  const recommendedProducts =
+    await getRecommendedProductsByProductIdAndCategoryId({
+      category_id: product.category_id,
+      product_id,
+    });
+
+  console.log(recommendedProducts);
 
   return (
     <div className="min-h-screen">
@@ -66,7 +84,9 @@ export default async function Item({ params }) {
             ) : null}
           </div>
         </div>
+
         <Separator />
+
         <div>
           <h2 className="my-2 text-lg font-semibold">Details</h2>
           <p>
@@ -75,6 +95,50 @@ export default async function Item({ params }) {
           <p>
             <span className="font-medium">Category:</span> {category.name}
           </p>
+        </div>
+
+        <Separator />
+
+        <div>
+          <h2 className="my-2 text-lg font-semibold">Reviews</h2>
+          {reviews.length > 0 ? (
+            reviews.map((rev) => {
+              return (
+                <p
+                  key={rev.content}
+                  className="my-2 rounded border p-3 font-medium"
+                >
+                  {rev.content}
+                </p>
+              );
+            })
+          ) : (
+            <p>No reviews for now...</p>
+          )}
+        </div>
+
+        <Separator />
+
+        <div>
+          <h2 className="my-2 text-lg font-semibold">You may also like</h2>
+          <div className="flex flex-row gap-2 overflow-x-auto">
+            {recommendedProducts.map((pr) => {
+              return (
+                <div className="flex-shrink-0 self-stretch" key={pr.product_id}>
+                  <ItemProductCard prod={pr} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <Separator />
+
+        <div>
+          <h2 className="my-2 text-lg font-semibold">
+            Browse other categories
+          </h2>
+          <ItemCategories category_id={product.category_id} />
         </div>
       </div>
     </div>

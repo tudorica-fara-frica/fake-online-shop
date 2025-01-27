@@ -139,3 +139,49 @@ export async function getCategories() {
     throw error;
   }
 }
+
+async function isImageUrlValid(url) {
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const contentType = response.headers.get("Content-Type");
+    return contentType && contentType.startsWith("image/");
+  } catch (error) {
+    console.error("Eroare la verificarea URL-ului:", error);
+    return false;
+  }
+}
+
+export async function getPhotoById(id) {
+  try {
+    const supabase = createClient();
+    const { data: url, error } = (await supabase).storage
+      .from("images")
+      .getPublicUrl(`product-${id}.jpeg`);
+    if (error) {
+      throw new Error(
+        `Eroare la obtinerea pozei pentru produsul cu id ${id}: ${error.message}`,
+      );
+    }
+    const isValid = await isImageUrlValid(url.publicUrl);
+    if (!isValid) {
+      const { data: fallbackUrl, error: fallbackError } = (
+        await supabase
+      ).storage
+        .from("images")
+        .getPublicUrl("default-product.jpg");
+      if (fallbackError) {
+        throw new Error(`Eroare la obtinerea pozei rezerva: ${error.message}`);
+      }
+      return fallbackUrl;
+    }
+    return url;
+  } catch (error) {
+    console.log(`A aparut o eroare. `, error);
+    throw error;
+  }
+}

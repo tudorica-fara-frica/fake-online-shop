@@ -1,4 +1,4 @@
-import { getCategoryById, getProductById } from "@/app/actions";
+import { getCategoryById, getPhotoById, getProductById } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -10,17 +10,19 @@ export default async function Item({ params }) {
   const product = await getProductById(product_id);
   const category = await getCategoryById(product.category_id);
 
-  const photoSrc = `${process.env.UNSPLASH_URL}?query=${product.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
-  const res = await fetch(photoSrc);
-  const { results } = await res.json();
-  const photoUrl = results[0].urls.raw;
+  // const photoSrc = `${process.env.UNSPLASH_URL}?query=${product.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
+  // const res = await fetch(photoSrc);
+  // const { results } = await res.json();
+  // const photoUrl = results[0].urls.raw;
+
+  const photoUrl = await getPhotoById(product_id);
 
   return (
     <div className="min-h-screen">
       <Image
         width={800}
         height={800}
-        src={photoUrl}
+        src={photoUrl.publicUrl}
         className="max-h-[500px] min-h-[250px] object-cover object-center"
         alt="product photo"
       />

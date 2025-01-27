@@ -9,6 +9,7 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
+import { getPhotoById } from "@/app/actions";
 
 export default async function CatalogProductCard({ prod, categories }) {
   function getProductInitials(productName) {
@@ -25,10 +26,12 @@ export default async function CatalogProductCard({ prod, categories }) {
     return category ? category.name : "Unknown Category";
   }
 
-  const photoSrc = `${process.env.UNSPLASH_URL}?query=${prod.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
-  const res = await fetch(photoSrc);
-  const { results } = await res.json();
-  const photoUrl = results[0].urls.raw;
+  // const photoSrc = `${process.env.UNSPLASH_URL}?query=${prod.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
+  // const res = await fetch(photoSrc);
+  // const { results } = await res.json();
+  // const photoUrl = results[0].urls.raw;
+
+  const photoUrl = await getPhotoById(prod.product_id);
 
   return (
     <Link href={`/catalog/${prod.product_id}`}>
@@ -39,7 +42,7 @@ export default async function CatalogProductCard({ prod, categories }) {
             height={300}
             width={300}
             alt={`product ${prod.product_id} image`}
-            src={photoUrl}
+            src={photoUrl.publicUrl}
           />
         </div>
         <CardHeader>

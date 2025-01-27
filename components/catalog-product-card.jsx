@@ -26,11 +26,6 @@ export default async function CatalogProductCard({ prod, categories }) {
     return category ? category.name : "Unknown Category";
   }
 
-  // const photoSrc = `${process.env.UNSPLASH_URL}?query=${prod.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
-  // const res = await fetch(photoSrc);
-  // const { results } = await res.json();
-  // const photoUrl = results[0].urls.raw;
-
   const photoUrl = await getPhotoById(prod.product_id);
 
   return (

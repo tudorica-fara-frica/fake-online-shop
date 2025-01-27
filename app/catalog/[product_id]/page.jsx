@@ -10,11 +10,6 @@ export default async function Item({ params }) {
   const product = await getProductById(product_id);
   const category = await getCategoryById(product.category_id);
 
-  // const photoSrc = `${process.env.UNSPLASH_URL}?query=${product.name}&page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
-  // const res = await fetch(photoSrc);
-  // const { results } = await res.json();
-  // const photoUrl = results[0].urls.raw;
-
   const photoUrl = await getPhotoById(product_id);
 
   return (

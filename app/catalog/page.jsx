@@ -3,8 +3,11 @@ import { getCategories, getProducts } from "../actions";
 import CatalogFilter from "@/components/catalog-filter";
 import { Card } from "@/components/ui/card";
 import CatalogSort from "@/components/catalog-sort";
+import { connection } from "next/server";
 
 export default async function Catalog({ searchParams }) {
+  await connection();
+
   const urlSearchParams = await searchParams;
   const category_id = urlSearchParams?.category_id || null;
   const has_discount = urlSearchParams?.has_discount || null;

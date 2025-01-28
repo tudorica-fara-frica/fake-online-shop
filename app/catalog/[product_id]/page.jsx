@@ -10,9 +10,12 @@ import ItemProductCard from "@/components/item-product-card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import { connection } from "next/server";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 export default async function Item({ params }) {
+  await connection();
+
   const product_id = (await params).product_id;
 
   const product = await getProductById(product_id);
@@ -27,8 +30,6 @@ export default async function Item({ params }) {
       category_id: product.category_id,
       product_id,
     });
-
-  console.log(recommendedProducts);
 
   return (
     <div className="min-h-screen">

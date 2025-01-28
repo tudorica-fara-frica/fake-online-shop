@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const firacode = Fira_Code({
   subsets: ["latin"],
@@ -16,12 +17,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={firacode.className}>
-      <body className="antialiased">
-        <Header />
-        {children}
-        <Separator />
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${firacode.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Separator />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

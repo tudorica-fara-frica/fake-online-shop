@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Koulen } from "next/font/google";
 import { HiBars3 } from "react-icons/hi2";
 import HeaderSearchbar from "./header-searchbar";
+import { ModeToggle } from "./theme-switch-button";
 
 const koulen = Koulen({
   weight: "400",
@@ -22,6 +23,7 @@ export default async function Header() {
       <div className="hidden sm:block">
         <p>restul navigatiei</p>
       </div>
+      <ModeToggle />
       <HiBars3 className="size-8" />
     </header>
   );

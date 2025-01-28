@@ -12,19 +12,18 @@ const koulen = Koulen({
 
 export default async function Header() {
   return (
-    <header className="sticky left-0 top-0 z-50 flex w-full flex-row items-center justify-between gap-2 px-4 py-2 backdrop-blur-sm">
+    <header className="sticky left-0 top-0 z-50 flex w-full flex-row items-center justify-between gap-2 px-4 py-2 backdrop-blur-sm sm:gap-4">
       <Link
         href="/"
-        className={`${koulen.className} text-4xl font-medium tracking-tight`}
+        className={`${koulen.className} text-4xl font-medium tracking-tight sm:text-5xl`}
       >
         scco.p
       </Link>
       <HeaderSearchbar />
-      <div className="hidden sm:block">
-        <p>restul navigatiei</p>
+      <div className="flex flex-row gap-1">
+        <ModeToggle />
+        <HeaderSidebar />
       </div>
-      <ModeToggle />
-      <HeaderSidebar />
     </header>
   );
 }

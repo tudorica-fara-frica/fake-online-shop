@@ -36,63 +36,69 @@ export default async function Item({ params }) {
     });
 
   return (
-    <div className="min-h-screen">
-      <Image
-        width={800}
-        height={800}
-        src={photoUrl.publicUrl}
-        className="max-h-[500px] min-h-[250px] object-cover object-center"
-        alt="product photo"
-      />
+    <div className="mx-auto min-h-screen max-w-[600px] xl:max-w-[1300px]">
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2">
+          <Image
+            width={800}
+            height={800}
+            src={photoUrl.publicUrl}
+            className="max-h-[500px] min-h-[250px] object-cover object-center sm:max-h-[800px] md:pl-4"
+            alt="product photo"
+          />
 
-      <div className="flex flex-col gap-4 p-4">
-        <div className="flex flex-col justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-2xl font-semibold">{product.name}</h1>
-            <Badge variant="secondary" className="self-start">
-              Stock: {product.stock}
-            </Badge>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <Badge
-              variant="outline"
-              className="flex flex-row items-center justify-center gap-4 py-2 text-lg"
-            >
-              <HiOutlineShoppingCart className="h-8 w-8" />
-              <span className="flex flex-col items-center justify-center">
-                <span
-                  className={
-                    product.discount !== 0 ? "text-sm line-through" : ""
-                  }
-                >
-                  {product.price} RON
-                </span>
-                {product.discount !== 0 ? (
-                  <span>
-                    {(Number(product.price) - Number(product.discount)).toFixed(
-                      2,
-                    )}{" "}
-                    RON
-                  </span>
-                ) : null}
-              </span>
-            </Badge>
-            {product.discount !== 0 ? (
-              <Badge
-                className="flex flex-col items-center justify-center p-1"
-                variant="secondary"
-              >
-                <span className="text-sm">{product.discount} RON</span>
-                <span>Discount</span>
+          <div className="mx-auto flex w-full max-w-[500px] flex-col justify-between gap-2 px-4 pt-4 md:justify-evenly md:pb-4">
+            <div className="flex flex-col gap-1 xl:gap-3">
+              <h1 className="text-2xl font-semibold xl:text-4xl">
+                {product.name}
+              </h1>
+              <Badge variant="secondary" className="self-start xl:text-lg">
+                Stock: {product.stock}
               </Badge>
-            ) : null}
+            </div>
+
+            <div className="mx-auto flex w-full flex-col gap-2 sm:flex-row md:flex-col xl:flex-row">
+              <Badge
+                variant="outline"
+                className="flex w-full flex-row items-center justify-center gap-4 py-2 text-lg"
+              >
+                <HiOutlineShoppingCart className="h-8 w-8" />
+                <span className="flex flex-col items-center justify-center">
+                  <span
+                    className={
+                      product.discount !== 0 ? "text-sm line-through" : ""
+                    }
+                  >
+                    {product.price} RON
+                  </span>
+                  {product.discount !== 0 ? (
+                    <span>
+                      {(
+                        Number(product.price) - Number(product.discount)
+                      ).toFixed(2)}{" "}
+                      RON
+                    </span>
+                  ) : null}
+                </span>
+              </Badge>
+              {product.discount !== 0 ? (
+                <Badge
+                  className="flex w-full flex-col items-center justify-center p-1 sm:flex-row sm:gap-2"
+                  variant="secondary"
+                >
+                  <span className="text-sm">{product.discount} RON</span>
+                  <span>Discount</span>
+                </Badge>
+              ) : null}
+            </div>
           </div>
         </div>
 
-        <Separator />
+        <div className="px-4">
+          <Separator />
+        </div>
 
-        <div>
+        <div className="px-4">
           <h2 className="my-2 text-lg font-semibold">Details</h2>
           <p>
             <span className="font-medium">About:</span> {product.details}
@@ -102,9 +108,11 @@ export default async function Item({ params }) {
           </p>
         </div>
 
-        <Separator />
+        <div className="px-4">
+          <Separator />
+        </div>
 
-        <div>
+        <div className="px-4">
           <h2 className="my-2 text-lg font-semibold">Reviews</h2>
           {reviews.length > 0 ? (
             reviews.map((rev) => {
@@ -122,9 +130,11 @@ export default async function Item({ params }) {
           )}
         </div>
 
-        <Separator />
+        <div className="px-4">
+          <Separator />
+        </div>
 
-        <div>
+        <div className="px-4">
           <h2 className="my-2 text-lg font-semibold">You may also like</h2>
           <div className="flex flex-row gap-2 overflow-x-auto">
             {recommendedProducts.map((pr) => {
@@ -137,9 +147,11 @@ export default async function Item({ params }) {
           </div>
         </div>
 
-        <Separator />
+        <div className="px-4">
+          <Separator />
+        </div>
 
-        <div>
+        <div className="px-4 pb-4">
           <h2 className="my-2 text-lg font-semibold">
             Browse other categories
           </h2>

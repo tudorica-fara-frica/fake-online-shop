@@ -42,16 +42,25 @@ export default function HeaderSidebar() {
           <SheetTitle>
             <Link
               href="/"
-              className={`${koulen.className} text-4xl font-medium tracking-tight`}
+              className={`${koulen.className} text-4xl font-medium tracking-tight sm:text-5xl`}
               onClick={() => setIsOpen(false)}
             >
               scco.p
             </Link>
           </SheetTitle>
-          <SheetDescription>Your sci-fi shop.</SheetDescription>
+          <SheetDescription className="sm:text-lg">
+            Your sci-fi shop.
+          </SheetDescription>
         </SheetHeader>
 
         <div className="my-2 flex flex-col gap-2 text-2xl">
+          <Link
+            className="my-1 rounded border p-3 transition-all hover:bg-secondary"
+            href="/catalog"
+            onClick={() => setIsOpen(false)}
+          >
+            Catalog
+          </Link>
           <Link
             className="my-1 rounded border p-3 transition-all hover:bg-secondary"
             href="/contact"

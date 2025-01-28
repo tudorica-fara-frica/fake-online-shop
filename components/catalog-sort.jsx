@@ -21,26 +21,26 @@ export default function CatalogSort() {
         router.push(`?${params.toString()}`);
       }}
     >
-      <SelectTrigger className="w-auto text-base">
+      <SelectTrigger className="w-auto text-base md:p-6 md:text-xl">
         <SelectValue placeholder="Sort"></SelectValue>
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="name-asc">
+        <SelectItem className="md:text-lg" value="name-asc">
           name <span className="mr-2">↑</span>
         </SelectItem>
-        <SelectItem value="name-desc">
+        <SelectItem className="md:text-lg" value="name-desc">
           name <span className="mr-2">↓</span>
         </SelectItem>
-        <SelectItem value="price-asc">
+        <SelectItem className="md:text-lg" value="price-asc">
           price <span className="mr-2">↑</span>
         </SelectItem>
-        <SelectItem value="price-desc">
+        <SelectItem className="md:text-lg" value="price-desc">
           price <span className="mr-2">↓</span>
         </SelectItem>
-        <SelectItem value="discount-asc">
+        <SelectItem className="md:text-lg" value="discount-asc">
           discount <span className="mr-2">↑</span>
         </SelectItem>
-        <SelectItem value="discount-desc">
+        <SelectItem className="md:text-lg" value="discount-desc">
           discount <span className="mr-2">↓</span>
         </SelectItem>
       </SelectContent>

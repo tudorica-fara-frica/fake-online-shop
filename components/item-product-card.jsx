@@ -19,10 +19,10 @@ export default async function ItemProductCard({ prod }) {
 
   return (
     <Link className="h-full" href={`/catalog/${prod.product_id}`}>
-      <Card className="flex h-full w-52 flex-col">
+      <Card className="flex h-full w-52 flex-col sm:w-64">
         <div className="flex items-center justify-center p-2">
           <Image
-            className="h-40 w-full rounded-md object-cover object-center"
+            className="h-48 w-full rounded-md object-cover object-center sm:h-56"
             height={300}
             width={300}
             alt={`product ${prod.product_id} image`}
@@ -39,16 +39,16 @@ export default async function ItemProductCard({ prod }) {
           <CardContent className="text-sm">
             <p>{prod.details}</p>
           </CardContent>
-          <CardFooter className="flex flex-col items-center justify-between">
+          <CardFooter className="flex flex-col items-start justify-between gap-2">
             {prod.discount !== 0 ? (
               <Badge
-                className="flex flex-row items-center justify-center p-1 text-sm"
+                className="flex flex-row items-center justify-center p-1 text-xs"
                 variant="secondary"
               >
                 {prod.discount} RON Discount
               </Badge>
             ) : null}
-            <Badge className="flex flex-col items-center justify-center text-base">
+            <Badge className="flex flex-col items-center justify-center text-lg">
               {(Number(prod.price) - Number(prod.discount)).toFixed(2)} RON
             </Badge>
           </CardFooter>

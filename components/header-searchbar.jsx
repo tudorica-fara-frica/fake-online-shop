@@ -25,10 +25,10 @@ export default function HeaderSearchbar() {
     <>
       <form
         action={onSearchSubmit}
-        className="flex flex-row items-center rounded-md border focus-within:outline-none focus-within:ring-1 focus-within:ring-ring"
+        className="flex w-full max-w-[600px] flex-row items-center rounded-md border focus-within:outline-none focus-within:ring-1 focus-within:ring-ring"
       >
         <Input
-          className="border-none bg-inherit focus-visible:ring-0"
+          className="w-full border-none bg-inherit focus-visible:ring-0"
           type="search"
           placeholder="Search..."
           name="searchQuery"

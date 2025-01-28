@@ -13,65 +13,67 @@ export default async function ContactPage() {
   const url = await TudorPhoto();
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-2 px-4">
-      <div className="flex w-56 flex-col items-center justify-center gap-4 rounded-3xl bg-secondary p-4">
+    <div className="grid min-h-screen grid-cols-[14rem] grid-rows-[auto_1fr] place-content-center justify-items-center gap-2 px-4 sm:grid-cols-[18rem_18rem] sm:grid-rows-[auto] sm:flex-row sm:items-center md:grid-cols-[22rem_22rem]">
+      <div className="mt-4 flex flex-col items-center justify-center gap-4 rounded-3xl bg-secondary p-4 sm:mt-0 sm:gap-6 sm:p-6 sm:text-xl md:text-2xl">
         <Image
           src={url}
-          height={300}
-          width={300}
+          height={150}
+          width={150}
           alt="Tudor-Gabriel photo"
-          className="h-40 w-40 rounded-full"
+          className="h-full w-full rounded-full"
         />
-        <div className="flex flex-col items-center justify-center gap-1">
+        <div className="flex flex-col items-center justify-center gap-1 sm:gap-2">
           <h1>Rîmbu Tudor-Gabriel</h1>
           <h2 className="underline underline-offset-4">Portfolio</h2>
         </div>
       </div>
-      <Link
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://www.instagram.com/tudorrimbu_/"
-        className="grid w-56 grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary"
-      >
-        <AiOutlineInstagram />
-        <h2>Instagram</h2>
-      </Link>
-      <Link
-        rel="noopener noreferrer"
-        target="_blank"
-        href="www.linkedin.com/in/tudor-gabriel-rîmbu-81a93230b"
-        className="grid w-56 grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary"
-      >
-        <AiOutlineLinkedin />
-        <h2>LinkedIn</h2>
-      </Link>
-      <Link
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/tudorica-fara-frica"
-        className="grid w-56 grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary"
-      >
-        <AiOutlineGithub />
-        <h2>GitHub</h2>
-      </Link>
-      <Link
-        target="_blank"
-        href="mailto:rtudorg2003@gmail.com"
-        rel="noopener noreferrer"
-        className="grid w-56 grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary"
-      >
-        <AiOutlineMail />
-        <h2>Email</h2>
-      </Link>
-      <Link
-        target="_blank"
-        href="tel:+40726816559"
-        rel="noopener noreferrer"
-        className="grid w-56 grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary"
-      >
-        <HiOutlinePhone />
-        <h2>Phone</h2>
-      </Link>
+      <div className="flex w-full flex-col gap-2 sm:text-xl">
+        <Link
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.instagram.com/tudorrimbu_/"
+          className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
+        >
+          <AiOutlineInstagram />
+          <h2>Instagram</h2>
+        </Link>
+        <Link
+          rel="noopener noreferrer"
+          target="_blank"
+          href="www.linkedin.com/in/tudor-gabriel-rîmbu-81a93230b"
+          className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
+        >
+          <AiOutlineLinkedin />
+          <h2>LinkedIn</h2>
+        </Link>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/tudorica-fara-frica"
+          className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
+        >
+          <AiOutlineGithub />
+          <h2>GitHub</h2>
+        </Link>
+        <Link
+          target="_blank"
+          href="mailto:rtudorg2003@gmail.com"
+          rel="noopener noreferrer"
+          className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
+        >
+          <AiOutlineMail />
+          <h2>Email</h2>
+        </Link>
+        <Link
+          target="_blank"
+          href="tel:+40726816559"
+          rel="noopener noreferrer"
+          className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
+        >
+          <HiOutlinePhone />
+          <h2>Phone</h2>
+        </Link>
+      </div>
     </div>
   );
 }

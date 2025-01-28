@@ -5,7 +5,7 @@ export default async function AboutPage() {
   const url = await Logo();
 
   return (
-    <div className="flex min-h-screen flex-col gap-4 p-4">
+    <div className="mx-auto my-4 flex min-h-screen max-w-[600px] flex-col gap-4 p-4 sm:my-8 lg:max-w-[900px]">
       <Image
         className="self-center"
         src={url}

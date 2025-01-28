@@ -26,45 +26,48 @@ export default function CatalogProducts({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 px-4">
-      {paginatedProducts.map((prod) => (
-        <Suspense
-          key={prod.product_id}
-          fallback={<CatalogProductCardSkeleton />}
-        >
-          <CatalogProductCard categories={categories} prod={prod} />
-        </Suspense>
-      ))}
+    <div className="mx-auto max-w-[750px] px-4 md:max-w-[1000px] xl:max-w-[1400px]">
+      <div className="grid grid-cols-1 place-content-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        {paginatedProducts.map((prod) => (
+          <Suspense
+            key={prod.product_id}
+            fallback={<CatalogProductCardSkeleton />}
+          >
+            <CatalogProductCard categories={categories} prod={prod} />
+          </Suspense>
+        ))}
+      </div>
 
-      <div className="mb-4 flex items-center justify-between">
+      <div className="my-4 flex items-center justify-between">
+        <h2 className="md:text-lg">
+          page {page}/{totalPages}
+        </h2>
+
         {totalPages > 1 ? (
           <div className="flex flex-row rounded-md border p-2">
             {+page > 1 ? (
               <Link
                 className={
                   page !== 1 && nextPage !== totalPages
-                    ? "flex flex-row items-center justify-center border-r px-2"
-                    : "flex flex-row items-center justify-center px-2"
+                    ? "flex flex-row items-center justify-center border-r px-2 md:text-lg"
+                    : "flex flex-row items-center justify-center px-2 md:text-lg"
                 }
                 href={getPageUrl(prevPage)}
               >
-                <HiMiniChevronLeft className="h-5 w-5" /> Prev
+                <HiMiniChevronLeft className="size-5 md:size-6" /> Prev
               </Link>
             ) : null}
 
             {+page < totalPages ? (
               <Link
-                className="flex flex-row items-center justify-center px-2"
+                className="flex flex-row items-center justify-center px-2 md:text-lg"
                 href={getPageUrl(nextPage)}
               >
-                Next <HiMiniChevronRight className="h-5 w-5" />
+                Next <HiMiniChevronRight className="size-5 md:size-6" />
               </Link>
             ) : null}
           </div>
         ) : null}
-        <h2>
-          page {page}/{totalPages}
-        </h2>
       </div>
     </div>
   );

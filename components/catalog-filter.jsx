@@ -80,12 +80,12 @@ export default function CatalogFilter() {
   return (
     <Sheet open={isOpen}>
       <SheetTrigger
-        className="self-start rounded-lg border px-4 py-2"
+        className="self-start rounded-lg border px-4 py-2 md:p-3 md:text-xl"
         onClick={() => setIsOpen(true)}
       >
         Filter
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="pt-10">
         <SheetClose
           onClick={() => setIsOpen(false)}
           disabled={isPending}
@@ -96,7 +96,7 @@ export default function CatalogFilter() {
         </SheetClose>
 
         <SheetHeader>
-          <SheetTitle>Filters</SheetTitle>
+          <SheetTitle className="sm:text-lg md:text-xl">Filters</SheetTitle>
         </SheetHeader>
 
         <Separator className="my-4" />
@@ -108,13 +108,19 @@ export default function CatalogFilter() {
               setDiscount(value === "all" ? "" : value);
             }}
           >
-            <SelectTrigger>
+            <SelectTrigger className="sm:p-5 sm:text-lg md:p-6 md:text-xl">
               <SelectValue placeholder="Discount" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="true">Yes</SelectItem>
-              <SelectItem value="false">No</SelectItem>
+              <SelectItem className="sm:text-base md:text-lg" value="all">
+                All
+              </SelectItem>
+              <SelectItem className="sm:text-base md:text-lg" value="true">
+                Yes
+              </SelectItem>
+              <SelectItem className="sm:text-base md:text-lg" value="false">
+                No
+              </SelectItem>
             </SelectContent>
           </Select>
 
@@ -122,8 +128,10 @@ export default function CatalogFilter() {
 
           <Accordion collapsible className="space-y-2">
             <AccordionItem value="cat-1">
-              <AccordionTrigger>Categories</AccordionTrigger>
-              <AccordionContent>
+              <AccordionTrigger className="font-normal sm:text-lg md:text-xl">
+                Categories
+              </AccordionTrigger>
+              <AccordionContent className="sm:text-base md:text-lg">
                 <div className="flex items-center">
                   <Checkbox
                     id="books"
@@ -180,7 +188,7 @@ export default function CatalogFilter() {
 
           <Separator className="my-4" />
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 sm:text-lg md:text-xl">
             <h2>Price</h2>
             <Slider
               defaultValue={[price]}
@@ -199,7 +207,12 @@ export default function CatalogFilter() {
 
           <Separator className="my-4" />
 
-          <Button disabled={isPending}>Filter</Button>
+          <Button
+            className="sm:p-5 sm:text-lg md:p-6 md:text-xl"
+            disabled={isPending}
+          >
+            Filter
+          </Button>
 
           {isPending ? (
             <>

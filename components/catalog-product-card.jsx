@@ -23,11 +23,11 @@ export default async function CatalogProductCard({ prod, categories }) {
   const photoUrl = await getPhotoById(prod.product_id);
 
   return (
-    <Link href={`/catalog/${prod.product_id}`}>
-      <Card className="flex flex-col">
+    <Link className="h-full" href={`/catalog/${prod.product_id}`}>
+      <Card className="flex h-full flex-col justify-between">
         <div className="p-2">
           <Image
-            className="h-96 w-full max-w-96 rounded-md object-cover object-center"
+            className="h-96 w-full rounded-md object-cover object-center"
             height={300}
             width={300}
             alt={`product ${prod.product_id} image`}

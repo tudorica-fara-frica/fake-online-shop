@@ -22,7 +22,10 @@ export default function Footer() {
         <Link href="/about">About</Link>
       </div>
       <h2 className="text-sm">
-        Made by <span className="font-semibold">Rîmbu Tudor-Gabriel</span>
+        Made by{" "}
+        <Link href="/contact" className="font-semibold">
+          Rîmbu Tudor-Gabriel
+        </Link>
       </h2>
     </div>
   );

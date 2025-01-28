@@ -225,3 +225,19 @@ export async function getRecommendedProductsByProductIdAndCategoryId({
     throw error;
   }
 }
+
+export async function TudorPhoto() {
+  try {
+    const supabase = await createClient();
+    const { data: photo, error } = (await supabase).storage
+      .from("images")
+      .getPublicUrl("square-1.jpg");
+    if (error) {
+      throw new Error(`Eroare la obtinerea pozei de profil: ${error.message}`);
+    }
+    return photo.publicUrl;
+  } catch (error) {
+    console.log("A aparut o eroare.", error);
+    throw error;
+  }
+}

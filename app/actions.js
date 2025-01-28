@@ -241,3 +241,19 @@ export async function TudorPhoto() {
     throw error;
   }
 }
+
+export async function Logo() {
+  try {
+    const supabase = await createClient();
+    const { data: photo, error } = (await supabase).storage
+      .from("images")
+      .getPublicUrl("icon.png");
+    if (error) {
+      throw new Error(`Eroare la obtinerea logoului: ${error.message}`);
+    }
+    return photo.publicUrl;
+  } catch (error) {
+    console.log("A aparut o eroare.", error);
+    throw error;
+  }
+}

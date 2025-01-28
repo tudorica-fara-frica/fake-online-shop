@@ -13,7 +13,7 @@ export default async function ContactPage() {
   const url = await TudorPhoto();
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-2 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-2 px-4">
       <div className="flex w-56 flex-col items-center justify-center gap-4 rounded-3xl bg-secondary p-4">
         <Image
           src={url}
@@ -22,7 +22,10 @@ export default async function ContactPage() {
           alt="Tudor-Gabriel photo"
           className="h-40 w-40 rounded-full"
         />
-        <h1>Rîmbu Tudor-Gabriel</h1>
+        <div className="flex flex-col items-center justify-center gap-1">
+          <h1>Rîmbu Tudor-Gabriel</h1>
+          <h2 className="underline underline-offset-4">Portfolio</h2>
+        </div>
       </div>
       <Link
         rel="noopener noreferrer"

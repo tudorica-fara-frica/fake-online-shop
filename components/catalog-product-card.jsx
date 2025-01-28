@@ -10,16 +10,10 @@ import {
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { getPhotoById } from "@/app/actions";
+import { connection } from "next/server";
 
 export default async function CatalogProductCard({ prod, categories }) {
-  function getProductInitials(productName) {
-    const cleanedName = productName.replace(/sci-fi\s*/i, "").trim();
-    const initials = cleanedName
-      .split(" ")
-      .map((word) => word[0])
-      .join("");
-    return initials.toUpperCase();
-  }
+  await connection();
 
   function getCategoryName(category_id) {
     const category = categories.find((cat) => cat.category_id === category_id);

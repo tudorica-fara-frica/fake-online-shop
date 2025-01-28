@@ -2,8 +2,11 @@ import { Card, CardTitle } from "./ui/card";
 import Link from "next/link";
 
 import { getCategories } from "@/app/actions";
+import { connection } from "next/server";
 
 export default async function ItemCategories({ category_id }) {
+  await connection();
+
   const categories = await getCategories();
 
   return (

@@ -10,8 +10,11 @@ import {
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { getPhotoById } from "@/app/actions";
+import { connection } from "next/server";
 
 export default async function ItemProductCard({ prod }) {
+  await connection();
+
   const photoUrl = await getPhotoById(prod.product_id);
 
   return (

@@ -70,7 +70,7 @@ export async function getProductById(product_id) {
     return Product;
   } catch (error) {
     console.log("A aparut o eroare", error);
-    throw error;
+    return null;
   }
 }
 

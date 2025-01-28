@@ -37,8 +37,6 @@ export default function Home() {
       >
         <Button>Get All Products</Button>
       </form>
-      {/* <Separator />
-      <p>Recommended products</p> */}
     </div>
   );
 }

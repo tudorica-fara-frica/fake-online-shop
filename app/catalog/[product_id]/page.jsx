@@ -10,6 +10,7 @@ import ItemProductCard from "@/components/item-product-card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
@@ -19,6 +20,9 @@ export default async function Item({ params }) {
   const product_id = (await params).product_id;
 
   const product = await getProductById(product_id);
+  if (!product) {
+    notFound();
+  }
   const category = await getCategoryById(product.category_id);
 
   const photoUrl = await getPhotoById(product_id);

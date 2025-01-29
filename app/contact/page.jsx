@@ -17,8 +17,8 @@ export default async function ContactPage() {
       <div className="mt-4 flex flex-col items-center justify-center gap-4 rounded-3xl bg-secondary p-4 sm:mt-0 sm:gap-6 sm:p-6 sm:text-xl md:text-2xl">
         <Image
           src={url}
-          height={150}
-          width={150}
+          height={1000}
+          width={1000}
           alt="Tudor-Gabriel photo"
           className="h-full w-full rounded-full"
         />

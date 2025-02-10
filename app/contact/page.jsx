@@ -40,7 +40,7 @@ export default async function ContactPage() {
         <Link
           rel="noopener noreferrer"
           target="_blank"
-          href="www.linkedin.com/in/tudor-gabriel-rîmbu-81a93230b"
+          href="https://www.linkedin.com/in/tudor-gabriel-rimbu"
           className="grid grid-cols-[1fr_4fr] place-items-center gap-1 rounded-xl border p-2 transition-all hover:bg-secondary sm:p-4"
         >
           <AiOutlineLinkedin />
